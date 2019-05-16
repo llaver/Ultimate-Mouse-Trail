@@ -39,7 +39,7 @@ app.on("ready", () =>
       //win.setSize(bwBounds.width, bwBounds.height);
     }
     win.loadFile("src/index.html");
-    win.webContents.openDevTools({ mode: "undocked" });
+    //win.webContents.openDevTools({ mode: "undocked" });
     console.log(
       "SIZE",
       win.getSize(),

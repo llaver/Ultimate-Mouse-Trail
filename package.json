@@ -1,7 +1,7 @@
 {
-  "name": "Ultimate Mouse Trail",
+  "name": "Ultimate-Mouse-Trail",
   "version": "1.0.0",
-  "description": "RIP to your CPU",
+  "description": "RIP CPU",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",

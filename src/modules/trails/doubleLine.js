@@ -156,7 +156,7 @@ class DoubleLine {
     this.screenshot = shouldTakeScreenshots;
     this.positions = [];
     this.curve = [];
-    this.motionTrailLength = 50;
+    this.motionTrailLength = 20;
     this.addBindings();
     this.addListeners();
     this.updateWindow();
