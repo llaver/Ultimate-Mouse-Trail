@@ -17,3 +17,5 @@ or
 
  * yarn
  * yarn start
+ 
+ Then click start
