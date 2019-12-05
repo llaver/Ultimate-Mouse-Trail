@@ -20,7 +20,8 @@ const Dotted = require("./modules/trails/dotted");
 const Line = require("./modules/trails/line");
 const Bezier = require("./modules/trails/bezier");
 const CurveCopy = require("./modules/trails/curveCopy");
-const DoubleLine = require("./modules/trails/doubleLine");
+const RainbowTrail = require("./modules/trails/rainbowTrail");
+const MouseCross = require("./modules/trails/mouseCross");
 
 class Renderer {
   constructor() {
@@ -52,7 +53,8 @@ class Renderer {
 
   run() {
     //new Dotted(this.canvas, this.ctx, false);
-    new DoubleLine(this.canvas, this.ctx, false);
+    new RainbowTrail(this.canvas, this.ctx, false);
+    //new MouseCross(this.canvas, this.ctx, false);
   }
 }
 

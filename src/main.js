@@ -36,7 +36,7 @@ app.on("ready", () =>
         width: bwBounds.width,
         height: bwBounds.height
       });
-      //win.setSize(bwBounds.width, bwBounds.height);
+      win.setSize(bwBounds.width, bwBounds.height);
     }
     win.loadFile("src/index.html");
     //win.webContents.openDevTools({ mode: "undocked" });

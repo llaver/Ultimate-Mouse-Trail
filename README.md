@@ -19,3 +19,7 @@ or
  * yarn start
  
  Then click start
+
+# TODO
+ * Move Mouse Listeners, mouse position vars, trail positions array to higher level class
+ 
