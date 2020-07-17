@@ -23,6 +23,6 @@
   "dependencies": {
     "electron-transparency-mouse-fix": "^1.0.0-beta",
     "fs-jetpack": "^2.2.0",
-    "lodash": "^4.17.13"
+    "lodash": "^4.17.19"
   }
 }
