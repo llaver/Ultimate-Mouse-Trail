@@ -20,13 +20,17 @@ app.on("ready", () =>
       transparent: true,
       frame: false,
       alwaysOnTop: true,
-      enableLargerThanScreen: true,
+      // enableLargerThanScreen: true,
       //useContentSize: true,
       skipTaskbar: true,
-      acceptFirstMouse: true, // Advised for a more intuitive experience
+      // acceptFirstMouse: true, // Advised for a more intuitive experience
       titleBarStyle: "hidden",
       hasShadow: false,
-      backgroundColor: "#00000000"
+      backgroundColor: "#00000000",
+      webPreferences: {
+        nodeIntegration: true,
+        contextIsolation: false,
+      }
     });
     if (!_.isEmpty(bwBounds)) {
       console.log("BWBOUNDS", bwBounds);
@@ -39,7 +43,7 @@ app.on("ready", () =>
       win.setSize(bwBounds.width, bwBounds.height);
     }
     win.loadFile("src/index.html");
-    //win.webContents.openDevTools({ mode: "undocked" });
+    win.webContents.openDevTools({ mode: "undocked" });
     console.log(
       "SIZE",
       win.getSize(),
@@ -53,6 +57,7 @@ app.on("ready", () =>
     win.webContents.on("devtools-focused", () => {
       win.webContents.focus();
     });
+    win.setIgnoreMouseEvents(true, {forward: true})
   }, 250)
 ); // Transparency on Linux requires a timeout
 

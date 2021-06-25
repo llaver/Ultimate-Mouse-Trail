@@ -8,7 +8,7 @@
  *
  * These are helper modules – non-visual modules.
  */
-const TakeScreenshotOnSpacebar = require("./helpers/take-screenshot-on-spacebar");
+// const TakeScreenshotOnSpacebar = require("./helpers/take-screenshot-on-spacebar");
 
 /**
  * REQUIRED MODULES
@@ -25,6 +25,7 @@ const MouseCross = require("./modules/trails/mouseCross");
 
 class Renderer {
   constructor() {
+    console.log("constructing")
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.width = null;
@@ -33,7 +34,7 @@ class Renderer {
     this.addListeners();
     this.update();
     this.run();
-    new TakeScreenshotOnSpacebar();
+    // new TakeScreenshotOnSpacebar();
   }
 
   addBindings() {
@@ -52,9 +53,10 @@ class Renderer {
   }
 
   run() {
-    //new Dotted(this.canvas, this.ctx, false);
-    new RainbowTrail(this.canvas, this.ctx, false);
-    //new MouseCross(this.canvas, this.ctx, false);
+    new Dotted(this.canvas, this.ctx, false);
+    new Line(this.canvas, this.ctx, false);
+    // new RainbowTrail(this.canvas, this.ctx, false);
+    new MouseCross(this.canvas, this.ctx, false);
   }
 }
 

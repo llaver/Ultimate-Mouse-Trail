@@ -6,9 +6,9 @@
 </head>
 <body class="click-through">
     <div class="canvas-wrap">
-        <div class="overlay click-on" onclick="this.style.display = 'none'">
-            Click!
-        </div>
+<!--        <div class="overlay click-on" onclick="this.style.display = 'none'">-->
+<!--            Click!-->
+<!--        </div>-->
         <canvas class="canvas" id="canvas"></canvas>
     </div>
 
@@ -34,19 +34,19 @@
             position: absolute;
         }
         .overlay {
-            top: 50%;
-            left: 50%;
+            top: 25%;
+            left: 25%;
             width: 64px;
             height: 32px;
             background-color: cyan;
         }
     </style>
     <script defer>
-        const TransparencyMouseFix = require('electron-transparency-mouse-fix');
-        const fix = new TransparencyMouseFix({
-            log: true,
-            fixPointerEvents: 'auto'
-        });
+        // const TransparencyMouseFix = require('electron-transparency-mouse-fix');
+        // const fix = new TransparencyMouseFix({
+        //     log: true,
+        //     fixPointerEvents: 'auto'
+        // });
         require('./renderer.js');
     </script>
 </body>

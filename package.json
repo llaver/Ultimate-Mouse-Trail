@@ -18,11 +18,11 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^9.4.0"
+    "electron": "^13.1.3"
   },
   "dependencies": {
     "electron-transparency-mouse-fix": "^1.0.0-beta",
-    "fs-jetpack": "^2.2.0",
+    "fs-jetpack": "^4.1.0",
     "lodash": "^4.17.21"
   }
 }
