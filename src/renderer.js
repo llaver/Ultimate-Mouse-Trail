@@ -25,7 +25,6 @@ const MouseCross = require("./modules/trails/mouseCross");
 
 class Renderer {
   constructor() {
-    console.log("constructing")
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.width = null;
@@ -33,23 +32,47 @@ class Renderer {
     this.addBindings();
     this.addListeners();
     this.update();
+    this.runOnce();
     this.run();
     // new TakeScreenshotOnSpacebar();
   }
 
   addBindings() {
     this.update = this.update.bind(this);
+    this.runOnce = this.runOnce.bind(this);
   }
 
   addListeners() {
     window.addEventListener("resize", this.update);
+    document.addEventListener("mousemove", event => {
+      global.mousePosition.x = event.x;
+      global.mousePosition.y = event.y;
+    });
   }
 
-  update() {
+  runOnce() {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.canvas.width = this.width;
     this.canvas.height = this.height;
+  }
+
+  update() {
+    requestAnimationFrame(this.update);
+    this.storeLastPos(global.mousePosition);
+  }
+
+  storeLastPos(m) {
+    console.log(m)
+    if (m) {
+      global.positions.push({
+        x: m.x,
+        y: m.y
+      });
+    }
+    if (global.positions.length > global.positionsMaxSize) {
+      global.positions.shift();
+    }
   }
 
   run() {

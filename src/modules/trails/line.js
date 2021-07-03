@@ -11,10 +11,8 @@ let mouse = {
 class Line {
   constructor(canvas, ctx) {
     this.ctx = ctx;
-    this.positions = [];
-    this.motionTrailLength = 40;
+    this.maxTrailSize = 50;
     this.addBindings();
-    this.addListeners();
     this.update();
   }
 
@@ -22,18 +20,10 @@ class Line {
     this.update = this.update.bind(this);
   }
 
-  addListeners() {
-    document.addEventListener("mousemove", event => {
-      mouse.x = event.x;
-      mouse.y = event.y;
-    });
-  }
-
   update() {
     requestAnimationFrame(this.update);
     this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    this.storeLastPos(mouse);
-    this.makeMore();
+    this.drawTrail();
     this.draw();
   }
 
@@ -44,29 +34,18 @@ class Line {
     return "hsl(" + (curPercent * (maxHue - minHue) + minHue) + ",100%,50%)";
   }
 
-  storeLastPos(m) {
-    if (m) {
-      this.positions.push({
-        x: m.x,
-        y: m.y
-      });
-    }
-    if (this.positions.length > this.motionTrailLength) {
-      this.positions.shift();
-    }
-  }
-
-  makeMore() {
-    for (let i = 0; i < this.positions.length; i++) {
-      const previousPos = this.positions[i]
-      const currentPos = this.positions[i + 1]
+  drawTrail() {
+    const positions = global.positions.slice(Math.max(global.positions.length - this.maxTrailSize, 0))
+    for (let i = 0; i < positions.length; i++) {
+      const previousPos = positions[i]
+      const currentPos = positions[i + 1]
 
       this.ctx.beginPath();
       this.ctx.moveTo(previousPos.x, previousPos.y);
       if (currentPos && currentPos.x && currentPos.y) {
         this.ctx.lineTo(currentPos.x, currentPos.y);
       }
-      this.ctx.strokeStyle = this.getRainbowColor(0, this.positions.length, i); //trail color;
+      this.ctx.strokeStyle = this.getRainbowColor(0, positions.length, i); //trail color;
       this.ctx.lineWidth = 3;
       this.ctx.lineCap = "round";
       this.ctx.lineJoin = "round";
@@ -77,7 +56,7 @@ class Line {
 
   draw() {
     this.ctx.beginPath();
-    this.ctx.arc(mouse.x, mouse.y, mouse.maxRadius, 0, Math.PI * 2, true);
+    this.ctx.arc(global.mousePosition.x, global.mousePosition.y, mouse.maxRadius, 0, Math.PI * 2, true);
     this.ctx.fillStyle = mouse.color;
     this.ctx.fill();
   }
