@@ -53,10 +53,7 @@ class Renderer {
   }
 
   run() {
-    new Dotted(this.canvas, this.ctx, false);
-    new Line(this.canvas, this.ctx, false);
-    // new RainbowTrail(this.canvas, this.ctx, false);
-    new MouseCross(this.canvas, this.ctx, false);
+    new Line(this.canvas, this.ctx);
   }
 }
 
