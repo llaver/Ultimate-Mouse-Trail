@@ -17,15 +17,16 @@
  * Modules should be in the /modules folder.
  */
 const Dotted = require("./modules/trails/dotted");
+const CurveLine = require("./modules/trails/curveLine");
 const Line = require("./modules/trails/line");
 const Bezier = require("./modules/trails/bezier");
 const CurveCopy = require("./modules/trails/curveCopy");
 const RainbowTrail = require("./modules/trails/rainbowTrail");
 const MouseCross = require("./modules/trails/mouseCross");
+const Partytime = require("./modules/trails/partytime");
 
 class Renderer {
   constructor() {
-    console.log("constructing")
     this.canvas = document.getElementById("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.width = null;
@@ -33,30 +34,56 @@ class Renderer {
     this.addBindings();
     this.addListeners();
     this.update();
+    this.runOnce();
     this.run();
     // new TakeScreenshotOnSpacebar();
   }
 
   addBindings() {
     this.update = this.update.bind(this);
+    this.runOnce = this.runOnce.bind(this);
   }
 
   addListeners() {
     window.addEventListener("resize", this.update);
+    document.addEventListener("mousemove", event => {
+      global.mousePosition.x = event.x;
+      global.mousePosition.y = event.y;
+    });
   }
 
-  update() {
+  runOnce() {
     this.width = window.innerWidth;
     this.height = window.innerHeight;
     this.canvas.width = this.width;
     this.canvas.height = this.height;
   }
 
+  update() {
+    requestAnimationFrame(this.update);
+    this.storeLastPos(global.mousePosition);
+  }
+
+  storeLastPos(m) {
+    if (m) {
+      global.positions.push({
+        x: m.x,
+        y: m.y
+      });
+      global.points.push(m.x)
+      global.points.push(m.y)
+    }
+    if (global.positions.length > global.positionsMaxSize) {
+      global.positions.shift();
+    }
+    if(global.points.length > 2 * global.positionsMaxSize) {
+      global.points.shift();
+      global.points.shift();
+    }
+  }
+
   run() {
-    new Dotted(this.canvas, this.ctx, false);
-    new Line(this.canvas, this.ctx, false);
-    // new RainbowTrail(this.canvas, this.ctx, false);
-    new MouseCross(this.canvas, this.ctx, false);
+    new CurveLine(this.canvas, this.ctx);
   }
 }
 

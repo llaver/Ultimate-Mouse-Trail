@@ -20,10 +20,7 @@ app.on("ready", () =>
       transparent: true,
       frame: false,
       alwaysOnTop: true,
-      // enableLargerThanScreen: true,
-      //useContentSize: true,
       skipTaskbar: true,
-      // acceptFirstMouse: true, // Advised for a more intuitive experience
       titleBarStyle: "hidden",
       hasShadow: false,
       backgroundColor: "#00000000",

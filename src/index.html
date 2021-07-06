@@ -2,13 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Transparency demo - electron-transparency-mouse-fix</title>
+    <title>Mouse Trail Demo - Electron</title>
 </head>
 <body class="click-through">
     <div class="canvas-wrap">
-<!--        <div class="overlay click-on" onclick="this.style.display = 'none'">-->
-<!--            Click!-->
-<!--        </div>-->
         <canvas class="canvas" id="canvas"></canvas>
     </div>
 
@@ -21,7 +18,6 @@
             width: 100%;
             height: 100%;
         }
-        .click-on      {pointer-events: all}
         .click-through {pointer-events: none}
         .canvas-wrap {
             position: relative;
@@ -30,23 +26,9 @@
             width: 100%;
             height: 100%;
         }
-        .overlay {
-            position: absolute;
-        }
-        .overlay {
-            top: 25%;
-            left: 25%;
-            width: 64px;
-            height: 32px;
-            background-color: cyan;
-        }
     </style>
     <script defer>
-        // const TransparencyMouseFix = require('electron-transparency-mouse-fix');
-        // const fix = new TransparencyMouseFix({
-        //     log: true,
-        //     fixPointerEvents: 'auto'
-        // });
+        require('./Globals.js');
         require('./renderer.js');
     </script>
 </body>
