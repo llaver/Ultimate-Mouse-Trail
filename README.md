@@ -1,6 +1,6 @@
 # The Obsession
 
-This project started 10 years ago, it has gone through many iterations in many different languages, none of them diverse enough to run on all operating systems while still being specific enough to do everything I needed it to. 
+This project started almost 15 years ago in an entirely different form, it has gone through many iterations in many different languages, none of them diverse enough to run on all operating systems while still being powerful enough to perform heavy calculations and large loops very quickly. 
 
 # The Solution
 
@@ -21,5 +21,6 @@ or
  Then click start
 
 # TODO
- * Move Mouse Listeners, mouse position vars, trail positions array to higher level class
+ * Create more modules
+ * Build UI for on the fly customization
  
