@@ -4,3 +4,4 @@ global.mousePosition = {
     x: undefined,
     y: undefined,
 };
+global.points = []

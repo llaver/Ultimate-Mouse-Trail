@@ -1,8 +1,6 @@
 "use strict";
 
 let mouse = {
-  x: undefined,
-  y: undefined,
   maxRadius: 7,
   color: "#2E0E4B",
   opacity: 2
@@ -28,9 +26,9 @@ class Line {
   }
 
   getRainbowColor(min, max, val) {
-    let minHue = 0,
+    const minHue = 0,
       maxHue = 330;
-    let curPercent = (val - min) / (max - min);
+    const curPercent = (val - min) / (max - min);
     return "hsl(" + (curPercent * (maxHue - minHue) + minHue) + ",100%,50%)";
   }
 
@@ -55,10 +53,10 @@ class Line {
   }
 
   draw() {
-    this.ctx.beginPath();
-    this.ctx.arc(global.mousePosition.x, global.mousePosition.y, mouse.maxRadius, 0, Math.PI * 2, true);
-    this.ctx.fillStyle = mouse.color;
-    this.ctx.fill();
+    // this.ctx.beginPath();
+    // this.ctx.arc(global.mousePosition.x, global.mousePosition.y, mouse.maxRadius, 0, Math.PI * 2, true);
+    // this.ctx.fillStyle = mouse.color;
+    // this.ctx.fill();
   }
 }
 

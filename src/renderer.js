@@ -17,11 +17,13 @@
  * Modules should be in the /modules folder.
  */
 const Dotted = require("./modules/trails/dotted");
+const CurveLine = require("./modules/trails/curveLine");
 const Line = require("./modules/trails/line");
 const Bezier = require("./modules/trails/bezier");
 const CurveCopy = require("./modules/trails/curveCopy");
 const RainbowTrail = require("./modules/trails/rainbowTrail");
 const MouseCross = require("./modules/trails/mouseCross");
+const Partytime = require("./modules/trails/partytime");
 
 class Renderer {
   constructor() {
@@ -63,20 +65,25 @@ class Renderer {
   }
 
   storeLastPos(m) {
-    console.log(m)
     if (m) {
       global.positions.push({
         x: m.x,
         y: m.y
       });
+      global.points.push(m.x)
+      global.points.push(m.y)
     }
     if (global.positions.length > global.positionsMaxSize) {
       global.positions.shift();
     }
+    if(global.points.length > 2 * global.positionsMaxSize) {
+      global.points.shift();
+      global.points.shift();
+    }
   }
 
   run() {
-    new Line(this.canvas, this.ctx);
+    new CurveLine(this.canvas, this.ctx);
   }
 }
 
