@@ -117,10 +117,10 @@ class Dotted {
   }
 
   draw() {
-    this.ctx.beginPath();
-    this.ctx.arc(mouse.x, mouse.y, mouse.maxRadius, 0, Math.PI * 2, true);
-    this.ctx.fillStyle = mouse.color;
-    this.ctx.fill();
+    // this.ctx.beginPath();
+    // this.ctx.arc(mouse.x, mouse.y, mouse.maxRadius, 0, Math.PI * 2, true);
+    // this.ctx.fillStyle = mouse.color;
+    // this.ctx.fill();
   }
 }
 

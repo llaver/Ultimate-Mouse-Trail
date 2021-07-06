@@ -19,7 +19,7 @@
  * @param {Boolean} [close=false] - Close the ends making the line continuous
  * @returns {Float32Array} New array with the calculated points that was added to the path
  */
-export function curve(ctx, points, tension, numOfSeg, close) {
+function curve(points, tension, numOfSeg, close) {
   "use strict";
 
   // options or defaults
@@ -105,8 +105,8 @@ export function curve(ctx, points, tension, numOfSeg, close) {
   res[rPos++] = points[l];
   res[rPos] = points[l + 1];
 
-  // add lines to path
-  for (i = 0, l = res.length; i < l; i += 2) ctx.lineTo(res[i], res[i + 1]);
-
   return res;
 }
+
+
+module.exports = curve;
