@@ -17,12 +17,12 @@ class MouseCross {
 		this.updateWindow();
 		this.update();
 	}
-	
+
 	addBindings() {
 		this.updateWindow = this.updateWindow.bind(this);
 		this.update = this.update.bind(this);
 	}
-	
+
 	addListeners() {
 		window.addEventListener("resize", this.updateWindow);
 		window.addEventListener("mousemove", event => {
@@ -38,18 +38,17 @@ class MouseCross {
 			false
 		);
 	}
-	
+
 	updateWindow() {
 		this.width = window.innerWidth;
 		this.height = window.innerHeight;
 	}
-	
+
 	update() {
 		requestAnimationFrame(this.update);
-		this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 		this.draw();
 	}
-	
+
 	draw() {
 		this.ctx.beginPath();
 		this.ctx.moveTo(mouse.x - 10, mouse.y - 10);
