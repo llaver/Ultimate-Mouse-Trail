@@ -68,7 +68,6 @@ class Dotted {
 
   update() {
     requestAnimationFrame(this.update);
-    this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     this.storeLastPos(mouse);
     this.makeMore();
     this.draw();
