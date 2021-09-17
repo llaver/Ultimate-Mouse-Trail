@@ -61,6 +61,7 @@ class Renderer {
 
   update() {
     requestAnimationFrame(this.update);
+    this.ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     this.storeLastPos(global.mousePosition);
   }
 
@@ -84,6 +85,7 @@ class Renderer {
 
   run() {
     new CurveLine(this.canvas, this.ctx);
+    // new MouseCross(this.canvas, this.ctx);
   }
 }
 
